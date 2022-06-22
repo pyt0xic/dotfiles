@@ -1,32 +1,31 @@
 -- Just an example, supposed to be placed in /lua/custom/
 
 local M = {}
-
 -- make sure you maintain the structure of `core/default_config.lua` here,
 -- example of changing theme:
+
 M.ui = {
    theme = "catppuccin",
+   transparency = "true",
 }
 
 M.plugins = {
-   user = require "custom.plugins",
-   options = {
-      lspconfig = {
-         setup_lspconf = "custom.plugins.lspconfig",
-      },
-  }
+    user = require "custom.plugins",
+    options = {
+        lspconfig = {
+            setup_lspconf = "custom.plugins.lspconfig",
+        },
+    },
+    override = {
+        ["hrsh7th/nvim-cmp"] = {
+            sources = {
+                { name = "copilot", group_index = 2 },
+                { name = "nvim_lsp", group_index = 2 },
+                { name = "path", group_index = 2 },
+                { name = "luasnip", group_index = 2 },
+	    	    { name = "buffer", group_index = 2 },
+            },
+        },
+    },
 }
--- disable cmp <Tab> and <Shift-Tab>
-M.cmp = {
-	sources = {
-		{ name = "copilot" },
-		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
-		{ name = "buffer" },
-		{ name = "nvim_lua" },
-		{ name = "path" },
-	}
-
-}
-
 return M

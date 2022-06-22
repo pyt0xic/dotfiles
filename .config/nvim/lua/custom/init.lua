@@ -7,7 +7,3 @@ set.softtabstop = 4
 set.shiftwidth = 4
 
 -- Foxpro
-vim.api.nvim_create_autocmd({"BufNewFile","BufRead"}, {
-    pattern = {"*.prg"},
-    command = "set syntax=foxpro",
-})
